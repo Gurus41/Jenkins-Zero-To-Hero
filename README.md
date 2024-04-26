@@ -54,6 +54,7 @@ sudo apt-get install jenkins
 
 **Note: ** By default, Jenkins will not be accessible to the external world due to the inbound traffic restriction by AWS. Open port 8080 in the inbound traffic rules as show below.
 
+- To check jenkin runing (ps -ef | grep jenkins)
 - EC2 > Instances > Click on <Instance-ID>
 - In the bottom tabs -> Click on Security
 - Security groups
@@ -92,18 +93,6 @@ Jenkins Installation is Successful. You can now starting using the Jenkins
 
 <img width="990" alt="Screenshot 2023-02-01 at 11 14 13 AM" src="https://user-images.githubusercontent.com/43399466/215961440-3f13f82b-61a2-4117-88bc-0da265a67fa7.png">
 
-## Install the Docker Pipeline plugin in Jenkins:
-
-   - Log in to Jenkins.
-   - Go to Manage Jenkins > Manage Plugins.
-   - In the Available tab, search for "Docker Pipeline".
-   - Select the plugin and click the Install button.
-   - Restart Jenkins after the plugin is installed.
-   
-<img width="1392" alt="Screenshot 2023-02-01 at 12 17 02 PM" src="https://user-images.githubusercontent.com/43399466/215973898-7c366525-15db-4876-bd71-49522ecb267d.png">
-
-Wait for the Jenkins to be restarted.
-
 
 ## Docker Slave Configuration
 
@@ -123,10 +112,31 @@ usermod -aG docker ubuntu
 systemctl restart docker
 ```
 
+### Used to switch the current to jenkins user & Docker running commands.
+
+```
+su - jenkins 
+docker run hello-world
+```
+
 Once you are done with the above steps, it is better to restart Jenkins.
 
 ```
 http://<ec2-instance-public-ip>:8080/restart
+
+## Install the Docker Pipeline plugin in Jenkins:
+
+   - Log in to Jenkins.
+   - Go to Manage Jenkins > Manage Plugins.
+   - In the Available tab, search for "Docker Pipeline".
+   - Select the plugin and click the Install button.
+   - Restart Jenkins after the plugin is installed.
+   
+<img width="1392" alt="Screenshot 2023-02-01 at 12 17 02 PM" src="https://user-images.githubusercontent.com/43399466/215973898-7c366525-15db-4876-bd71-49522ecb267d.png">
+
+Wait for the Jenkins to be restarted.
+
+
 ```
 
 The docker agent configuration is now successful.
