@@ -124,6 +124,8 @@ Once you are done with the above steps, it is better to restart Jenkins.
 ```
 http://<ec2-instance-public-ip>:8080/restart
 
+```
+
 ## Install the Docker Pipeline plugin in Jenkins:
 
    - Log in to Jenkins.
